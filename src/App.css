@@ -1,38 +1,1081 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #f5f5f5;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Login Styles */
+.login-container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.login-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-form h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login-form button:hover {
+  background: #5a6fd8;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: #667eea;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-left: 0.5rem;
+}
+
+/* Navbar Styles */
+.navbar {
+  background: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand h2 {
+  color: #667eea;
+  margin: 0;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.notification-dropdown {
+  position: relative;
+}
+
+.notification-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ff4757;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  min-width: 250px;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.notification-item {
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+}
+
+.username {
+  color: #666;
+}
+
+.logout-btn {
+  background: #ff4757;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Navigation Styles */
+.navbar-nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-btn {
+  padding: 0.5rem 1rem;
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.nav-btn:hover {
+  background: #f8f9fa;
+  border-color: #667eea;
+}
+
+.nav-btn.active {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+/* Dashboard Styles */
+.dashboard {
+  min-height: 100vh;
+}
+
+.dashboard-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.dashboard-content h1 {
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.manga-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.manga-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.manga-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.manga-thumbnail img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.manga-card h3 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.manga-card p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.status {
+  padding: 0.25rem 0.5rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.status.completed {
+  background: #2ed573;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.status.in-progress {
+  background: #ffa502;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
+.status.waiting {
+  background: #747d8c;
+  color: white;
+}
+
+.add-manga-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #667eea;
+  color: white;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.add-manga-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.modal input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.member-section h3 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.add-member {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.add-member input {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.add-member button {
+  padding: 0.75rem 1rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.member-list {
+  margin-bottom: 1.5rem;
+}
+
+.member-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+}
+
+.member-item.host {
+  background: #e3f2fd;
+  font-weight: bold;
+}
+
+.member-item button {
+  background: #ff4757;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.modal-actions button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-actions button:first-child {
+  background: #ddd;
+  color: #333;
+}
+
+.modal-actions button:last-child {
+  background: #667eea;
+  color: white;
+}
+
+.modal-actions button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Room Styles */
+.manga-room {
+  min-height: 100vh;
+}
+
+.room-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+
+.leave-btn {
+  background: #ff4757;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.prompt-display {
+  background: #e3f2fd;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #ddd;
+  font-size: 1.1rem;
+}
+
+/* Story Chat Styles */
+.story-chat {
+  display: flex;
+  height: calc(100vh - 200px);
+}
+
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 1rem;
+  background: white;
+}
+
+.message {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.message.user {
+  background: #e3f2fd;
+  margin-left: 2rem;
+}
+
+.message.ai {
+  background: #f3e5f5;
+  margin-right: 2rem;
+}
+
+.message-header {
+  margin-bottom: 0.5rem;
+}
+
+.message-text {
+  margin-bottom: 0.5rem;
+}
+
+.add-to-story-btn {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.story-section {
+  background: white;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+}
+
+.story-text {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 5px;
+  margin: 1rem 0;
+  min-height: 100px;
+  white-space: pre-wrap;
+}
+
+.generate-prompts-btn {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.input-section {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.input-section input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.input-section button {
+  padding: 0.75rem 1.5rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Drawing Styles */
+.drawing-container {
+  display: flex;
+  height: calc(100vh - 200px);
+  position: relative;
+}
+
+.drawing-sidebar {
+  width: 250px;
+  background: white;
+  padding: 1rem;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+}
+
+.tool-section,
+.size-section,
+.sticker-section,
+.text-section {
+  margin-bottom: 2rem;
+}
+
+.tool-section h3,
+.size-section h3 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.tool-btn {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.tool-btn:hover {
+  background: #e9ecef;
+}
+
+.tool-btn.active {
+  background: #667eea;
+  color: white;
+}
+
+.size-slider {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.size-display {
+  font-weight: bold;
+  color: #667eea;
+}
+
+.sticker-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.sticker-btn {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+
+.sticker-btn:hover {
+  transform: scale(1.1);
+}
+
+.canvas-container {
+  flex: 1;
+  position: relative;
+  background: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  border: 2px solid #ddd;
+  background: white;
+  cursor: crosshair;
+}
+
+.canvas-element {
+  position: fixed;
+  cursor: move;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed transparent;
+  font-size: 1.2rem;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.canvas-element.selected {
+  border-color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.canvas-element.text {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.25rem;
+  border-radius: 3px;
+  color: black;
+  font-weight: bold;
+}
+
+.canvas-element.sticker {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.resize-handle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #667eea;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: se-resize;
+}
+
+.resize-se {
+  bottom: -5px;
+  right: -5px;
+}
+
+.rotate-handle {
+  position: absolute;
+  top: -15px;
+  right: -5px;
+  width: 12px;
+  height: 12px;
+  background: #ff6b6b;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: grab;
+}
+
+.rotate-handle:active {
+  cursor: grabbing;
+}
+
+.trash-zone {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 71, 87, 0.1);
+  border: 2px dashed #ff4757;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.done-btn {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 2rem;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Waiting Screen */
+.waiting-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 200px);
+  text-align: center;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 2rem;
+}
+
+@keyframes spin {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
+  }
+}
+
+/* Final Manga */
+.final-manga {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.final-manga h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.story-summary {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.story-summary h3 {
+  margin-bottom: 1rem;
+  color: #667eea;
+}
+
+.manga-pages {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.manga-page {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.manga-page h4 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.manga-page img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.manga-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.download-btn,
+.share-btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.download-btn {
+  background: #667eea;
+  color: white;
+}
+
+.share-btn {
+  background: #4caf50;
+  color: white;
+}
+
+/* Homepage Styles */
+.homepage {
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.homepage-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 3rem 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 15px;
+  margin-bottom: 3rem;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.feed-controls {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-section,
+.sort-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-section label,
+.sort-section label {
+  font-weight: bold;
+  color: #333;
+}
+
+.filter-section select,
+.sort-section select {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: white;
+  cursor: pointer;
+}
+
+.manga-feed {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.feed-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feed-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.feed-thumbnail {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.feed-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.feed-card:hover .feed-thumbnail img {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.feed-card:hover .overlay {
+  opacity: 1;
+}
+
+.read-btn {
+  padding: 0.75rem 1.5rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transform: translateY(10px);
+  transition: transform 0.3s;
+}
+
+.feed-card:hover .read-btn {
+  transform: translateY(0);
+}
+
+.feed-info {
+  padding: 1.5rem;
+}
+
+.feed-info h3 {
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.author {
+  color: #667eea;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.likes,
+.views {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.date {
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .navbar-actions {
+    gap: 0.5rem;
+  }
+
+  .dashboard-content {
+    padding: 1rem;
+  }
+
+  .manga-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .drawing-container {
+    flex-direction: column;
+  }
+
+  .drawing-sidebar {
+    width: 100%;
+    height: 200px;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  canvas {
+    width: 100%;
+    height: 400px;
+  }
+
+  .modal {
+    width: 95%;
+    margin: 1rem;
+  }
+
+  .navbar-nav {
+    gap: 0.5rem;
+  }
+
+  .nav-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .hero-section p {
+    font-size: 1rem;
+  }
+
+  .feed-controls {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .manga-feed {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .homepage-content {
+    padding: 1rem;
   }
 }
