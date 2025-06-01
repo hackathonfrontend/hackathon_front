@@ -2,37 +2,32 @@
 
 import { useState } from "react"
 import "./chat-interface.css"
-
+import axios from "axios"
 export default function ChatInterface({ room, user, onStoryGenerated }) {
   const [messages, setMessages] = useState([])
   const [inputText, setInputText] = useState("")
   const [story, setStory] = useState("")
 
-  const handleSendMessage = () => {
-    if (inputText.trim()) {
-      const newMessage = {
-        id: Date.now(),
-        text: inputText,
-        sender: user.username,
-        timestamp: new Date().toLocaleTimeString(),
+  const handleSendMessage = async () => {
+  if (inputText.trim()) {
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/ai/create-story", {
+        prompt: inputText,
+        people: room?.members?.length || 4,
+      })
+      const text = response.data.response || ""
+      const part1Match = text.match(/Part 1:\s*([\s\S]*?)(?:Part 2:|$)/)
+      if (part1Match) {
+        const part1Text = part1Match[1].trim()
+        onStoryGenerated(part1Text) // <-- This triggers the view change!
+      } else {
+        console.log("Part 1 not found")
       }
-      setMessages((prev) => [...prev, newMessage])
-
-      // Simulate AI response
-      setTimeout(() => {
-        const aiResponse = {
-          id: Date.now() + 1,
-          text: `Here's a story suggestion based on your input: "${inputText}". A young hero discovers a mysterious artifact that grants them incredible powers, but they must learn to control it before an ancient evil awakens.`,
-          sender: "AI Assistant",
-          timestamp: new Date().toLocaleTimeString(),
-          isAI: true,
-        }
-        setMessages((prev) => [...prev, aiResponse])
-      }, 1000)
-
-      setInputText("")
+    } catch (error) {
+      console.error("Failed to fetch story from AI.", error)
     }
   }
+}
 
   const handleAddToStory = (messageText) => {
     setStory((prev) => prev + " " + messageText)

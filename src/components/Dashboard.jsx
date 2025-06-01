@@ -1,14 +1,15 @@
 "use client"
 
 import { useState } from "react"
-import Navbar from "./navbar"
+import Navbar from './Navbar.jsx'
 import MangaGrid from "./manga-grid"
 import CreateRoomModal from "./create-room-modal"
 import RoomLobby from "./room-lobby"
 import JoinRoomModal from "./join-room-modal"
 import "./dashboard.css"
+// Ensure this import is correct
 
-export default function Dashboard({ user, onLogout, onStartDrawing }) {
+export default function Dashboard({ user, onLogout, onStartDrawing, onGoToChat }) {
   const [lastRoomId, setLastRoomId] = useState(null)
   const [showJoinModal, setShowJoinModal] = useState(false)
   const [showCreateModal, setShowCreateModal] = useState(false)
@@ -96,12 +97,16 @@ export default function Dashboard({ user, onLogout, onStartDrawing }) {
     },
   ])
 
-const handleCreateRoom = (roomData) => {
-  setLastRoomId(roomData.room_id)
-  setShowJoinModal(true)
-  setShowCreateModal(false)
-  // NU mai apela setShowLobby(true) aici!
-}
+const handleCreateRoom = (room) => {
+    setCurrentRoom(room)
+    setShowCreateModal(false)
+    onGoToChat(room) // This should be called here
+  }
+  const handleJoinRoom = (room) => {
+    setCurrentRoom(room)
+    setShowJoinModal(false)
+
+  }
 
   const handleStartFromLobby = (room) => {
     setShowLobby(false)
@@ -184,6 +189,7 @@ const handleCreateRoom = (roomData) => {
           roomId={lastRoomId}
         />
       )}
+      
     </div>
   )
 }
