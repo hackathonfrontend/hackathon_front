@@ -11,7 +11,7 @@ export default function ChatInterface({ room, user, onStoryGenerated }) {
   const handleSendMessage = async () => {
   if (inputText.trim()) {
     try {
-      const response = await axios.post("http://127.0.0.1:8000/ai/create-story", {
+      const response = await axios.post("https://hackathon-api-f6zo.onrender.com/ai/create-story", {
         prompt: inputText,
         people: room?.members?.length || 4,
       })

@@ -18,32 +18,33 @@ export default function DrawingInterface({ user, room, prompt, onLogout, onFinis
   }, [prompt])
 
   const handleFinishDrawing = async () => {
-    const imageData = canvasRef.current.getImage()
-    try {
-      const token = localStorage.getItem("access_token")
-      const response = await fetch("http://127.0.0.1:8000/save-drawing", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          image: imageData,
-          room_id: room?.room_id,
-          user_id: user?.user_id,
-        }),
-      })
-      if (response.ok) {
-        setIsWaiting(true)
-        setTimeout(() => {
-          onFinishManga()
-        }, 3000)
-      } else {
-        alert("Failed to save drawing!")
-      }
-    } catch (err) {
-      alert("Error: " + err.message)
-    }
+    // const imageData = canvasRef.current.getImage()
+    // try {
+    //   const token = localStorage.getItem("access_token")
+    //   const response = await fetch("http://127.0.0.1:8000/save-drawing", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //     body: JSON.stringify({
+    //       image: imageData,
+    //       room_id: room?.room_id,
+    //       user_id: user?.user_id,
+    //     }),
+    //   })
+    //   if (response.ok) {
+    //     setIsWaiting(true)
+    //     setTimeout(() => {
+    //       onFinishManga()
+    //     }, 3000)
+    //   } else {
+    //     alert("Failed to save drawing!")
+    //   }
+    // } catch (err) {
+    //   alert("Error: " + err.message)
+    // }
+    onFinishManga()
   }
 
   return (
@@ -72,7 +73,7 @@ export default function DrawingInterface({ user, room, prompt, onLogout, onFinis
 
           <div className="canvas-container">
             <DrawingCanvas
-              ref={canvasRef}
+              // ref={canvasRef}
               selectedTool={selectedTool}
               brushSize={brushSize}
               elements={canvasElements}

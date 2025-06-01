@@ -4,13 +4,12 @@ import "./final-manga.css"
 
 export default function FinalManga({ room, onBackToDashboard }) {
   // Mock manga pages data
-  const mangaPages = [
-    { id: 1, image: "/placeholder.svg?height=600&width=400", artist: "User1" },
-    { id: 2, image: "/placeholder.svg?height=600&width=400", artist: "User2" },
-    { id: 3, image: "/placeholder.svg?height=600&width=400", artist: "User3" },
-    { id: 4, image: "/placeholder.svg?height=600&width=400", artist: "User4" },
-  ]
-
+const mangaPages = [
+  { id: 1, image: "/images/manga1.jpeg", artist: "User1" },
+  { id: 2, image: "/images/manga2.jpeg", artist: "User2" },
+  { id: 3, image: "/images/manga3.jpeg", artist: "User3" },
+  { id: 4, image: "/images/manga4.jpeg", artist: "User4" },
+]
   return (
     <div className="final-manga">
       <div className="manga-header">

@@ -3,24 +3,20 @@
 import { useRef, useEffect, useState, forwardRef, useImperativeHandle } from "react"
 import "./drawing-canvas.css"
 
-// export default function DrawingCanvas({ selectedTool, brushSize, elements, onElementsChange }) {
-//   const canvasRef = useRef(null)
-const DrawingCanvas = forwardRef(function DrawingCanvas(
-  { selectedTool, brushSize, elements, onElementsChange },
-  ref
-) {
+export default function DrawingCanvas({ selectedTool, brushSize, elements, onElementsChange }) {
   const canvasRef = useRef(null)
+// const DrawingCanvas = forwardRef(function DrawingCanvas(
+//   { selectedTool, brushSize, elements, onElementsChange },
+//   ref
+// ) {
+//   const canvasRef = useRef(null)
   const [isDrawing, setIsDrawing] = useState(false)
   const [draggedElement, setDraggedElement] = useState(null)
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
   const [selectedElement, setSelectedElement] = useState(null)
   const [isDragging, setIsDragging] = useState(false)
 
-    useImperativeHandle(ref, () => ({
-    getImage: () => {
-      return canvasRef.current.toDataURL("image/png")
-    },
-  }))
+
   
   useEffect(() => {
     const canvas = canvasRef.current
@@ -369,6 +365,4 @@ const DrawingCanvas = forwardRef(function DrawingCanvas(
       {/* <div className="trash-zone">🗑️</div> */}
     </div>
   )
-})
-
-export default DrawingCanvas
+}
