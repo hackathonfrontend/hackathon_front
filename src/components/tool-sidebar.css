@@ -1,0 +1,342 @@
+.tool-sidebar-container {
+  display: flex;
+  position: relative;
+}
+
+.tool-sidebar {
+  width: 250px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+.tool-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tool-section h3 {
+  margin: 0;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+}
+
+.tool-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.tool-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #00d4ff;
+}
+
+.tool-btn.active {
+  background: linear-gradient(45deg, #00d4ff, #ff00ff);
+  border-color: transparent;
+}
+
+.tool-icon {
+  font-size: 1.2rem;
+}
+
+.size-slider-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.size-slider {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.size-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(45deg, #00d4ff, #ff00ff);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.size-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(45deg, #00d4ff, #ff00ff);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.size-display {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.size-preview {
+  background: white;
+  border-radius: 50%;
+  min-width: 8px;
+  min-height: 8px;
+}
+
+.size-display span {
+  color: white;
+  font-size: 0.9rem;
+}
+
+.text-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.text-input {
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #00d4ff;
+}
+
+.text-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.add-text-btn {
+  padding: 8px 15px;
+  background: linear-gradient(45deg, #00d4ff, #ff00ff);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-text-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+}
+
+/* Sticker Side Panel */
+.sticker-side-panel {
+  width: 300px;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 80px);
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.sticker-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sticker-panel-header h3 {
+  margin: 0;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.close-panel-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: white;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.close-panel-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.sticker-tabs {
+  display: flex;
+  padding: 15px 20px;
+  gap: 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-wrap: wrap;
+}
+
+.sticker-tab {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  text-align: center;
+  min-width: 60px;
+}
+
+.sticker-tab:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.sticker-tab.active {
+  background: linear-gradient(45deg, #00d4ff, #ff00ff);
+  border-color: transparent;
+  color: white;
+}
+
+.sticker-list {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.sticker-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+}
+
+.sticker-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #00d4ff;
+  transform: translateX(5px);
+  box-shadow: 0 5px 20px rgba(0, 212, 255, 0.2);
+}
+
+.sticker-emoji {
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.sticker-item:hover .sticker-emoji {
+  transform: scale(1.2);
+}
+
+/* Custom scrollbar for sticker list */
+.sticker-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sticker-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.sticker-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.sticker-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .tool-sidebar-container {
+    flex-direction: column;
+  }
+
+  .tool-sidebar {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .tool-section {
+    min-width: 200px;
+    gap: 10px;
+  }
+
+  .tool-section h3 {
+    font-size: 1rem;
+  }
+
+  .sticker-side-panel {
+    width: 100%;
+    height: 300px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  .sticker-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 10px;
+  }
+
+  .sticker-item {
+    min-height: 50px;
+  }
+
+  .sticker-emoji {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,70 @@
+.waiting-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+
+.waiting-content {
+  text-align: center;
+  color: white;
+  max-width: 400px;
+  padding: 40px;
+}
+
+.loading-animation {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.loading-circle {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(45deg, #00d4ff, #ff00ff);
+  border-radius: 50%;
+  animation: bounce 1.4s ease-in-out infinite both;
+}
+
+.loading-circle:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-circle:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+.waiting-content h2 {
+  margin: 0 0 15px 0;
+  font-size: 1.8rem;
+  background: linear-gradient(45deg, #00d4ff, #ff00ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.waiting-content p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}

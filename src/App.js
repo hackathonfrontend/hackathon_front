@@ -1,87 +1,79 @@
+"use client"
+
 import { useState, useEffect } from "react"
-import Login from "./components/Login"
-import Dashboard from "./components/Dashboard"
-import Homepage from "./components/Homepage"
-import MangaRoom from "./components/MangaRoom"
+import HomePage from "./components/home-page"
+import LoginPage from "./components/login-page"
+import Dashboard from "./components/dashboard"
+import DrawingInterface from "./components/drawing-interface"
+import FinalManga from "./components/final-manga"
 
 export default function App() {
   const [user, setUser] = useState(null)
-  const [currentView, setCurrentView] = useState("homepage") // 'homepage', 'dashboard', 'room'
+  const [currentView, setCurrentView] = useState("home") // home, login, dashboard, drawing, final
   const [currentRoom, setCurrentRoom] = useState(null)
 
   // Mock user data
   useEffect(() => {
-    const savedUser = localStorage.getItem("mangaUser")
-    if (savedUser) {
-      setUser(JSON.parse(savedUser))
+    // Simulate checking for logged in user
+    const mockUser = localStorage.getItem("manga-user")
+    if (mockUser) {
+      setUser(JSON.parse(mockUser))
+      setCurrentView("dashboard")
     }
   }, [])
 
   const handleLogin = (userData) => {
     setUser(userData)
-    localStorage.setItem("mangaUser", JSON.stringify(userData))
+    localStorage.setItem("manga-user", JSON.stringify(userData))
+    setCurrentView("dashboard")
   }
 
   const handleLogout = () => {
     setUser(null)
-    localStorage.removeItem("mangaUser")
-    setCurrentView("homepage")
+    localStorage.removeItem("manga-user")
+    setCurrentView("home")
     setCurrentRoom(null)
   }
 
-  const handleJoinRoom = (room) => {
-    setCurrentRoom(room)
-    setCurrentView("room")
+  if (currentView === "home") {
+    return <HomePage onShowLogin={() => setCurrentView("login")} />
   }
 
-  const handleLeaveRoom = () => {
-    setCurrentRoom(null)
-    setCurrentView("dashboard")
-  }
-
-  const handleNavigation = (view) => {
-    setCurrentView(view)
-    setCurrentRoom(null)
-  }
-
-  if (!user) {
-    return <Login onLogin={handleLogin} />
+  if (currentView === "login") {
+    return <LoginPage onLogin={handleLogin} onBackToHome={() => setCurrentView("home")} />
   }
 
   return (
     <div className="app">
-      {currentView === "homepage" && <Homepage user={user} onLogout={handleLogout} onNavigate={handleNavigation} />}
       {currentView === "dashboard" && (
-        <Dashboard user={user} onLogout={handleLogout} onJoinRoom={handleJoinRoom} onNavigate={handleNavigation} />
+        <Dashboard
+          user={user}
+          onLogout={handleLogout}
+          onStartDrawing={(room) => {
+            setCurrentRoom(room)
+            setCurrentView("drawing")
+          }}
+        />
       )}
-      {currentView === "room" && (
-        <MangaRoom user={user} room={currentRoom} onLeaveRoom={handleLeaveRoom} onLogout={handleLogout} />
+
+      {currentView === "drawing" && (
+        <DrawingInterface
+          user={user}
+          room={currentRoom}
+          onLogout={handleLogout}
+          onFinishManga={() => setCurrentView("final")}
+        />
+      )}
+
+      {currentView === "final" && (
+        <FinalManga
+          room={currentRoom}
+          onBackToDashboard={() => {
+            setCurrentView("dashboard")
+            setCurrentRoom(null)
+          }}
+        />
       )}
     </div>
   )
 }
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
